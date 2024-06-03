@@ -1,4 +1,3 @@
-// Sidebar.js
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -9,7 +8,7 @@ function Sidebar({ isOpen }) {
     <div
       className={`fixed top-0 left-0 h-full bg-gradient-to-br from-green-400 to-blue-500 text-white w-64 ${
         isOpen ? "transform translate-x-0" : "transform -translate-x-full"
-      } transition-transform duration-300 ease-in-out md:relative md:translate-x-0`}
+      } transition-transform duration-300 ease-in-out md:relative md:translate-x-0 rounded-lg`}
     >
       <div className="p-4 h-full overflow-y-auto">
         <div className="user-profile mb-6">

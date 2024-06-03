@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-
-import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Chat from "./pages/Chat";
 import ProfilePage from "./pages/ProfilePage"; // Import ProfilePage
@@ -33,8 +32,19 @@ function App() {
   ]);
 
   const [currentChat, setCurrentChat] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check authentication status (this could be from a context, local storage, etc.)
+    const loggedIn = true; // This should be replaced with real authentication check
+    setIsAuthenticated(loggedIn);
+
+    if (!loggedIn) {
+      navigate("/login");
+    }
+  }, [navigate]);
 
   const selectConversation = (id) => {
     const chat = conversations.find((conv) => conv.id === id);
@@ -59,14 +69,18 @@ function App() {
   };
 
   return (
-    <Routes>
+    <Routes className="bg-black">
       <Route
         path="/"
         element={
-          <Home
-            conversations={conversations}
-            selectConversation={selectConversation}
-          />
+          isAuthenticated ? (
+            <Home
+              conversations={conversations}
+              selectConversation={selectConversation}
+            />
+          ) : (
+            <Login />
+          )
         }
       />
       {currentChat && (

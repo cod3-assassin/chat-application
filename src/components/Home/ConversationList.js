@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 function ConversationList({ conversations, selectConversation }) {
   return (
-    <div className="conversation-list flex-grow overflow-y-scroll p-4 border-l border-gray-300">
+    <div className="conversation-list  p-4 rounded-lg bg-white shadow-md">
       <input
         type="text"
         placeholder="Search..."
@@ -14,7 +14,7 @@ function ConversationList({ conversations, selectConversation }) {
         conversations.map((conv) => (
           <div
             key={conv.id}
-            className="conversation-item p-4 border-b border-gray-300 cursor-pointer hover:bg-gray-50 rounded-lg"
+            className="conversation-item p-4 mb-2 border border-gray-300 cursor-pointer hover:bg-gray-50 rounded-lg shadow-sm"
             onClick={() => selectConversation(conv.id)}
             role="button"
             tabIndex={0}
@@ -24,7 +24,7 @@ function ConversationList({ conversations, selectConversation }) {
               }
             }}
           >
-            <h4 className="text-lg font-semibold">{conv.name}</h4>
+            <h4 className="text-lg font-semibold text-gray-900">{conv.name}</h4>
             <p className="text-sm text-gray-600 truncate">{conv.lastMessage}</p>
           </div>
         ))

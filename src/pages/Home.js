@@ -10,15 +10,17 @@ function Home({ conversations, selectConversation }) {
   };
 
   return (
-    <div className="flex h-screen bg-gray-100 overflow-hidden">
+    <div className="flex h-screen overflow-hidden bg-black">
       <button
         className="md:hidden p-2 text-2xl absolute top-4 right-4 z-50"
         onClick={toggleSidebar}
       >
         &#9776;
       </button>
-      <Sidebar isOpen={isSidebarOpen} />
-      <div className="flex-1 overflow-y-auto">
+      <div className="p-2 ml-6">
+        <Sidebar isOpen={isSidebarOpen} />
+      </div>
+      <div className="flex-1 overflow-y-auto p-2 ml-2 mr-2 bg-white">
         <ConversationList
           conversations={conversations}
           selectConversation={selectConversation}
