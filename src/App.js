@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+
+import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Chat from "./pages/Chat";
 import ProfilePage from "./pages/ProfilePage"; // Import ProfilePage
 import ProfileSettings from "./components/Profile/ProfileSettings";
+import Login from "./components/Auth/Login"; // Import Login
+import Register from "./components/Auth/Register"; // Import Register
 
 function App() {
   const [user, setUser] = useState({
@@ -36,6 +39,7 @@ function App() {
   const selectConversation = (id) => {
     const chat = conversations.find((conv) => conv.id === id);
     setCurrentChat(chat);
+
     navigate(`/chat/${id}`);
   };
 
@@ -70,7 +74,7 @@ function App() {
           path={`/chat/${currentChat.id}`}
           element={
             <Chat
-              chatName={currentChat.name}
+              chatName={currentChat?.name}
               messages={[]}
               sendMessage={sendMessage}
               backToHome={backToHome}
@@ -92,6 +96,8 @@ function App() {
         path="/settings"
         element={<ProfileSettings user={user} onUpdate={updateProfile} />}
       />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
     </Routes>
   );
 }
