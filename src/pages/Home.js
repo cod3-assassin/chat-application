@@ -20,7 +20,7 @@ function Home({ conversations, selectConversation }) {
       <div className="p-2 ml-6">
         <Sidebar isOpen={isSidebarOpen} />
       </div>
-      <div className="flex-1 overflow-y-auto p-2 ml-2 mr-2 bg-white">
+      <div className="flex-1 overflow-y-auto p-2 ml-1 mr-1">
         <ConversationList
           conversations={conversations}
           selectConversation={selectConversation}

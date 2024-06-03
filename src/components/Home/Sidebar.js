@@ -6,7 +6,7 @@ function Sidebar({ isOpen }) {
 
   return (
     <div
-      className={`fixed top-0 left-0 h-full bg-gradient-to-br from-green-400 to-blue-500 text-white w-64 ${
+      className={`fixed top-0 left-0 h-full bg-gradient-to-br from-green-400 to-blue-500 text-white w-64 z-10 ${
         isOpen ? "transform translate-x-0" : "transform -translate-x-full"
       } transition-transform duration-300 ease-in-out md:relative md:translate-x-0 rounded-lg`}
     >

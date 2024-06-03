@@ -29,6 +29,9 @@ function App() {
     { id: 6, name: "Riko", lastMessage: "How are you?" },
     { id: 7, name: "Private", lastMessage: "Hey there!" },
     { id: 8, name: "Riko", lastMessage: "How are you?" },
+    { id: 9, name: "Riko", lastMessage: "How are you?" },
+    { id: 10, name: "Private", lastMessage: "Hey there!" },
+    { id: 11, name: "Riko", lastMessage: "How are you?" },
   ]);
 
   const [currentChat, setCurrentChat] = useState(null);
