@@ -1,4 +1,6 @@
+// ProfileSettings.js
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function ProfileSettings({ user, onUpdate }) {
   const [formData, setFormData] = useState({
@@ -6,6 +8,8 @@ function ProfileSettings({ user, onUpdate }) {
     email: user.email,
     bio: user.bio,
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -15,11 +19,18 @@ function ProfileSettings({ user, onUpdate }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onUpdate(formData);
+    navigate("/profile"); // Navigate to the profile page after saving
   };
 
   return (
-    <div className="bg-white p-4 shadow rounded">
-      <h2 className="text-xl font-bold mb-4">Profile Settings</h2>
+    <div className="bg-white p-6 shadow rounded-lg">
+      <button
+        onClick={() => navigate(-1)}
+        className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400 mb-4"
+      >
+        Back
+      </button>
+      <h2 className="text-2xl font-bold mb-4">Profile Settings</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label htmlFor="name" className="block font-semibold mb-1">

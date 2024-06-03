@@ -1,7 +1,11 @@
-import React from "react";
+// src/store/index.js
+import { configureStore } from "@reduxjs/toolkit";
+import userReducer from "./slices/userSlice";
 
-const index = () => {
-  return <div>index</div>;
-};
+const store = configureStore({
+  reducer: {
+    user: userReducer,
+  },
+});
 
-export default index;
+export default store;

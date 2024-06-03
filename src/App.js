@@ -1,10 +1,23 @@
-// App.js
 import React, { useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Chat from "./pages/Chat";
+import ProfilePage from "./pages/ProfilePage"; // Import ProfilePage
+import ProfileSettings from "./components/Profile/ProfileSettings";
 
 function App() {
+  const [user, setUser] = useState({
+    name: "John Doe",
+    email: "johndoe@example.com",
+    bio: "Software Developer",
+  });
+
+  const [activities] = useState([
+    { timestamp: "2024-06-03", description: "Logged in" },
+    { timestamp: "2024-06-02", description: "Updated profile" },
+    { timestamp: "2024-06-01", description: "Joined a new chat" },
+  ]);
+
   const [conversations] = useState([
     { id: 1, name: "John Doe", lastMessage: "Hey there!" },
     { id: 2, name: "Jane Smith", lastMessage: "How are you?" },
@@ -15,6 +28,7 @@ function App() {
     { id: 7, name: "Private", lastMessage: "Hey there!" },
     { id: 8, name: "Riko", lastMessage: "How are you?" },
   ]);
+
   const [currentChat, setCurrentChat] = useState(null);
 
   const navigate = useNavigate();
@@ -33,6 +47,11 @@ function App() {
   const backToHome = () => {
     setCurrentChat(null);
     navigate("/");
+  };
+
+  const updateProfile = (updatedData) => {
+    setUser(updatedData);
+    console.log("Profile updated:", updatedData);
   };
 
   return (
@@ -59,6 +78,20 @@ function App() {
           }
         />
       )}
+      <Route
+        path="/profile"
+        element={
+          <ProfilePage
+            user={user}
+            activities={activities}
+            onUpdateProfile={updateProfile}
+          />
+        }
+      />
+      <Route
+        path="/settings"
+        element={<ProfileSettings user={user} onUpdate={updateProfile} />}
+      />
     </Routes>
   );
 }

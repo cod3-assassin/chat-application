@@ -22,6 +22,12 @@ function Sidebar({ isOpen }) {
         </div>
         <div className="navigation mb-4">
           <button
+            onClick={() => navigate("/profile")}
+            className="block mb-2 text-gray-100 hover:text-white"
+          >
+            Profile
+          </button>
+          <button
             onClick={() => navigate("/settings")}
             className="block mb-2 text-gray-100 hover:text-white"
           >
