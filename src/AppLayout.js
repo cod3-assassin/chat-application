@@ -1,12 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
+
 import Sidebar from "./components/Home/Sidebar";
 import { AiOutlineSearch } from "react-icons/ai";
 
 function AppLayout() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+  const [conversations] = useState([
+    { id: 1, name: "John Doe", lastMessage: "Hey there!" },
+    { id: 2, name: "Jane Smith", lastMessage: "How are you?" },
+    { id: 3, name: "Skipper", lastMessage: "Hey there!" },
+    { id: 4, name: "Kwolski", lastMessage: "How are you?" },
+    { id: 5, name: "Private", lastMessage: "Hey there!" },
+    { id: 6, name: "Riko", lastMessage: "How are you?" },
+    { id: 7, name: "Private", lastMessage: "Hey there!" },
+    { id: 8, name: "Riko", lastMessage: "How are you?" },
+  ]);
   return (
-    <div className="flex h-screen bg-black">
-      {/* Sidebar */}
-      <Sidebar />
+    <div className="flex h-screen overflow-hidden bg-black">
+      <button
+        className="md:hidden p-2 text-2xl absolute top-4 right-4 z-50"
+        onClick={toggleSidebar}
+      >
+        &#9776;
+      </button>
+      <Sidebar isOpen={isSidebarOpen} />
       {/* Main Content */}
       <div className="flex flex-1 flex-col lg:flex-row overflow-hidden">
         {/* Conversation List */}
@@ -19,15 +39,19 @@ function AppLayout() {
               className="bg-transparent focus:outline-none w-full text-gray-800"
             />
           </div>
-          <div className="overflow-y-auto space-y-4 rounded-lg">
+          <div className="space-y-4 rounded-lg md:overflow-y-scroll">
             {/* Conversation items will be mapped here */}
-            <div className="p-2 bg-[#F8F9FB] rounded-lg shadow-md hover:bg-[#E4E5E9]">
-              <div className="font-bold">Design Chat</div>
-              <div className="text-sm text-gray-600">
-                You: Hey! We are ready...
-              </div>
-            </div>
-            {/* Add more conversation items */}
+            {conversations.map((convo) => {
+              return (
+                <div
+                  key={convo.id}
+                  className="p-2 bg-[#F8F9FB] rounded-lg shadow-md hover:bg-[#E4E5E9]"
+                >
+                  <p className="font-bold">{convo.name}</p>
+                  <p className="text-sm text-gray-600">{convo.lastMessage}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
 

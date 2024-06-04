@@ -4,12 +4,12 @@ import PropTypes from "prop-types";
 function ConversationList({ conversations, selectConversation }) {
   return (
     <div className="conversation-list w-96 p-2 fixed h-full rounded-lg bg-white shadow-md max-h-[575px] overflow-y-auto">
-      <input
+      {/* <input
         type="text"
         placeholder="Search..."
         className="search-bar p-2 mb-2 w-full bg-gray-200 text-gray-800 rounded-lg focus:outline-none focus:bg-white"
         aria-label="Search conversations"
-      />
+      /> */}
       <div className="conversation-list-inner">
         {conversations.length > 0 ? (
           conversations.map((conv) => (
