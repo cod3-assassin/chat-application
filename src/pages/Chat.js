@@ -78,9 +78,8 @@ function Chat({ chatName }) {
   };
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-full">
       <ChatHeader chatName={chatName} />
-
       <div className="messages flex-grow p-4 bg-gray-100 overflow-y-auto">
         {messages.map((msg, index) => (
           <div
