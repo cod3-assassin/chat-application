@@ -8,6 +8,7 @@ import {
   FiEdit,
   FiLogOut,
 } from "react-icons/fi";
+
 function Sidebar({ isOpen }) {
   const navigate = useNavigate();
 
@@ -15,7 +16,7 @@ function Sidebar({ isOpen }) {
     <div
       className={`fixed h-full ${
         isOpen ? "transform translate-x-0" : "transform -translate-x-full"
-      } transition-transform duration-300 ease-in-out md:relative md:translate-x-0 rounded-lg`}
+      } transition-transform duration-300 ease-in-out md:relative md:translate-x-0 rounded-lg z-40`}
     >
       <div className="lg:flex flex-col w-20 bg-[#343541] text-white p-4 space-y-4 rounded-lg h-full">
         <button className="w-full p-2 rounded-lg hover:bg-[#474953] flex justify-center">
